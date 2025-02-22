@@ -97,7 +97,7 @@ FROM base AS deps
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 # Use --force to bypass dependency conflicts
-RUN pnpm install --force
+RUN pnpm install 
 
 # =========================
 # BUILD STAGE
