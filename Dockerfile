@@ -18,7 +18,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 
 # Install all dependencies
-RUN pnpm install --legacy-peer-deps
+RUN pnpm install --force
 # =========================
 # BUILD STAGE
 # =========================
