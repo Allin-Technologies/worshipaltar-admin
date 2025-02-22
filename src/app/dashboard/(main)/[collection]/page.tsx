@@ -1,7 +1,6 @@
 import { DownloadCSV } from "@/components/download-csv-button";
 import { Separator } from "@/components/ui/separator";
 import { CollectionTable } from "./data-table";
-import { SidebarTrigger } from "@/components/ui/sidebar";
 import { getCollectionList } from "@/actions/admin/collection";
 import Data from "./data.json";
 import { notFound } from "next/navigation";
@@ -19,8 +18,6 @@ export default async function Table(props: {
     collection: page.type === "attendee" ? "registration" : (page.type as any),
     pagination: { pageIndex: 0, pageSize: 24 },
   });
-
-  console.log(defaultData);
 
   return (
     <>
@@ -46,7 +43,11 @@ export default async function Table(props: {
         <div id='table___timeline__' className='text-sm text-gray-60' />
         <div />
         <div className='flex justify-end'>
-          <DownloadCSV collection='registration' />
+          <DownloadCSV
+            collection={
+              page.type === "attendee" ? "registration" : (page.type as any)
+            }
+          />
         </div>
       </div>
       <div className='min-h-[100vh] flex flex-col flex-1 rounded-xl md:min-h-min px-4 pt-0 space-y-3'>

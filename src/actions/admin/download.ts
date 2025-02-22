@@ -30,6 +30,17 @@ export async function getCSVContent(
 
     if (!response.ok) {
       const errorDetails = await response.text();
+
+      if (errorDetails) {
+        const errorDetailsJson = JSON.parse(errorDetails);
+        if (errorDetailsJson && errorDetailsJson?.message)
+          return {
+            data: null,
+            status: false,
+            message: errorDetailsJson?.message,
+          };
+      }
+
       throw new Error(
         `Failed to register: ${response.status} ${response.statusText}. Details: ${errorDetails}`
       );

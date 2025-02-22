@@ -33,11 +33,6 @@ import Link from "next/link";
 import { Session } from "next-auth";
 
 const data = {
-  user: {
-    name: "Kin",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   navMain: [
     {
       title: "Registrations",
@@ -80,12 +75,12 @@ const data = {
       icon: Settings2,
       items: [
         {
-          title: "Admins",
-          url: "#",
+          title: "Accounts",
+          url: "/dashboard/accounts",
         },
         {
-          title: "Agents",
-          url: "#",
+          title: "Invite",
+          url: "/dashboard/accounts/intive",
         },
       ],
     },

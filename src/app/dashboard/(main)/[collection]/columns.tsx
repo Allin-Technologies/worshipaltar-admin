@@ -36,7 +36,7 @@ export const regColumns: ColumnDef<Registration>[] = [
   },
   {
     accessorKey: "checked_in",
-    header: "Check in",
+    header: "Checked in",
     cell({ row }) {
       const value = row.original.checked_in;
 

@@ -82,7 +82,7 @@ export async function api<T>(
 
       return {
         response_code: 500,
-        message: errorResponse.message,
+        message: errorResponse?.error?.[0]?.message || errorResponse.message,
         data: errorResponse.data,
         count: 1,
         next: null,
