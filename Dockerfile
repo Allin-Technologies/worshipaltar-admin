@@ -18,8 +18,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 
 # Install all dependencies
-RUN pnpm install --frozen-lockfile
-
+RUN pnpm install --frozen-lockfile --legacy-peer-deps
 # =========================
 # BUILD STAGE
 # =========================
