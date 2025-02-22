@@ -96,7 +96,8 @@ RUN apk add --no-cache libc6-compat curl \
 FROM base AS deps
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile && pnpm store prune
+# Use --force to bypass dependency conflicts
+RUN pnpm install --force
 
 # =========================
 # BUILD STAGE
@@ -133,4 +134,6 @@ EXPOSE 3001
 ENV PORT=3001
 ENV HOSTNAME="0.0.0.0"
 CMD ["node", "./server.js"]
+
+
 
