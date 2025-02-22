@@ -18,7 +18,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 
 # Install all dependencies
-RUN pnpm install --frozen-lockfile --force
+RUN pnpm install --frozen-lockfile 
 # =========================
 # BUILD STAGE
 # =========================
