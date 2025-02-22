@@ -17,8 +17,10 @@ export default async function Table(props: {
 
   const defaultData = await getCollectionList({
     collection: page.type === "attendee" ? "registration" : (page.type as any),
-    pagination: { pageIndex: 0, pageSize: 10 },
+    pagination: { pageIndex: 0, pageSize: 24 },
   });
+
+  console.log(defaultData);
 
   return (
     <>
@@ -57,7 +59,7 @@ export default async function Table(props: {
             page.type === "attendee" ? "registration" : (page.type as any)
           }
           defaultData={defaultData?.data.items ?? []}
-          defaultPagination={{ pageIndex: 0, pageSize: 10 }}
+          defaultPagination={{ pageIndex: 0, pageSize: 24 }}
         />
       </div>
     </>

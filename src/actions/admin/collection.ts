@@ -39,11 +39,33 @@ export async function getCollectionList(params: Params): Promise<{
     };
   }
 
+  const collectionValidator =
+    params.collection === "registration"
+      ? Registration
+      : params.collection === "volunteer"
+      ? Sponsor
+      : params.collection === "sponsor"
+      ? Volunteer
+      : undefined;
+
+  if (!collectionValidator) {
+    return {
+      data: {
+        items: null,
+        total: 0,
+      },
+      status: false,
+      message: "Recourse key not specified!",
+    };
+  }
+
   try {
     const response = await api(
       z.object({
-        items: z.object({ _id: z.string() }).array(),
+        items: z.any().array(),
         total: z.number(),
+        limit: z.number(),
+        skip: z.number(),
       }),
       {
         url: `/admin/${params.collection}`,
@@ -63,7 +85,7 @@ export async function getCollectionList(params: Params): Promise<{
           : response?.message ?? "Something went wrong",
     };
   } catch (error) {
-    console.error("Error requesting registration data", error);
+    console.error(`Error requesting ${params.collection} data`, error);
     return {
       data: {
         items: null,

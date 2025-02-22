@@ -4,12 +4,17 @@ import { Separator } from "@/components/ui/separator";
 import { DataTable } from "./data-table";
 import { regColumns } from "./[collection]/columns";
 import Link from "next/link";
+import { getAnalyticsData } from "@/actions/admin/analytics";
+import { AnalyticsAreaChart } from "./charts/area.chart";
 
 export default async function Page() {
   const defaultData = await getCollectionList({
     collection: "registration",
-    pagination: { pageIndex: 0, pageSize: 10 },
+    pagination: { pageIndex: 0, pageSize: 24 },
   });
+
+  const daysAnalyticsData = await getAnalyticsData({ timeline: "days" });
+  const monthAnalyticsData = await getAnalyticsData({ timeline: "year" });
 
   return (
     <>
@@ -19,17 +24,14 @@ export default async function Page() {
         </h1>
       </div>
 
-      <div className='p-4'>
-        <div className='flex-col justify-start items-start gap-6 inline-flex'>
+      <div className='p-4 w-full'>
+        <div className='flex-col justify-start items-start gap-6 flex'>
           <h1 className='text-neutral-900 text-4xl font-semibold'>Metrics</h1>
 
-          <div className='self-stretch justify-between items-center inline-flex'>
-            <div className='flex-col justify-start items-start gap-3 inline-flex'>
-              <p className='text-[#757575] text-sm leading-none'>
-                Total Number of{" "}
-              </p>
-            </div>
-          </div>
+          <AnalyticsAreaChart
+            days={daysAnalyticsData.data ?? {}}
+            month={monthAnalyticsData.data ?? {}}
+          />
         </div>
       </div>
 

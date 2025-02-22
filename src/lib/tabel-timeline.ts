@@ -3,8 +3,6 @@ import { formatDateRange } from "little-date";
 export function filterTimeline(data: Array<{ timestamp?: string | Date }>) {
   if (data.length === 0) return "No data available";
 
-  console.log(data);
-
   const dates = data
     .map((item) => (item.timestamp ? new Date(item.timestamp) : null))
     .filter((date): date is Date => date !== null && !isNaN(date.getTime())); // Exclude null dates and invalid dates

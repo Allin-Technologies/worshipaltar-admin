@@ -6,11 +6,11 @@ export const defaultSchema = z.object({
   email: z.string().email(),
   tel: z.string(),
   gender: z.enum(["male", "female", "other"]),
-  timestamp: z.date(),
+  timestamp: z.date().or(z.string()),
 });
 
 export const Registration = defaultSchema.extend({
-  checked_in: z.boolean(),
+  checked_in: z.boolean().optional(),
   metadata: z.object({
     financial_goals: z.string(),
   }),

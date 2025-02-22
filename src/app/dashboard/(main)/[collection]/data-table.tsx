@@ -5,8 +5,8 @@ import {
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
-  PaginationState,
   useReactTable,
+  type PaginationState,
 } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/table";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Registration, Sponsor, Volunteer } from "@/schema/entities";
-import { regColumns, volunteerColumns } from "./columns";
+import { regColumns, volunteerColumns, sponsorColumns } from "./columns";
 import { Portal } from "@/components/ui/portal";
 import { Separator } from "@/components/ui/separator";
 import { useSearchParams } from "next/navigation";
@@ -42,7 +42,7 @@ export function CollectionTable({
     collection === "registration"
       ? regColumns
       : collection === "sponsor"
-      ? regColumns
+      ? sponsorColumns
       : volunteerColumns;
 
   const searchParams = useSearchParams();
@@ -67,9 +67,9 @@ export function CollectionTable({
   const defaultData = React.useMemo(() => _defaultData, [_defaultData]);
 
   const table = useReactTable({
-    data: dataQuery.data?.data.items ?? defaultData,
+    data: dataQuery.data?.data?.items ?? defaultData,
     // pageCount: dataQuery.data?.data. ?? -1,
-    pageCount: 1,
+    rowCount: dataQuery.data?.data?.total ?? 0,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -84,7 +84,7 @@ export function CollectionTable({
     <div className='space-y-5 flex flex-col flex-1'>
       <Portal targetId='table___timeline__' className='flex gap-3 item-center'>
         {dataQuery?.isFetching && (
-          <Loader className='size-4 text-gray-100 animate-spin' />
+          <Loader className='size-4 text-gray-400 animate-spin' />
         )}
         <span className='leading-none'>
           {filterTimeline(dataQuery?.data?.data.items ?? [])}

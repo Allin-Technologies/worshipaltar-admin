@@ -16,4 +16,5 @@ export const Pagination = z.object({
 export interface PaginationState {
   pageIndex: number;
   pageSize?: number;
+  limit?: number;
 }

@@ -143,7 +143,7 @@ export function LoginForm({
             </Link>
             <h1 className='text-xl font-bold'>Welcome Back</h1>
             <div className='text-center text-sm'>
-              Don&apos;t have an account? Contact Admin.
+              Don&apos;t have an account? Contact the admin.
             </div>
           </div>
           <Form {...form}>
