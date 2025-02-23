@@ -111,7 +111,7 @@ export default function Page() {
                       />
                     </FormControl>
                     <FormDescription>
-                      Enter the user's email address.
+                      Enter the user&apos;s email address.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
