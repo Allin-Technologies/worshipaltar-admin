@@ -62,7 +62,7 @@ jobs:
             --name kmc-admin-frontend-container \
             -e API_BASE_URL="${{ secrets.API_BASE_URL }}" \
             -e AUTH_SECRET="${{ secrets.AUTH_SECRET }}" \
-            -e PUBLIC_DOMAIN_URL="${{ secrets.PUBLIC_DOMAIN_URL }}"
+            -e PUBLIC_DOMAIN_URL="${{ secrets.PUBLIC_DOMAIN_URL }}" \
             jdmghk/kmc-admin-frontend:latest
 
       - name: Check container logs
