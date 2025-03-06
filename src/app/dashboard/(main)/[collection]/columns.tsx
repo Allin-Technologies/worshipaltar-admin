@@ -181,8 +181,9 @@ export const volunteerColumns: ColumnDef<Volunteer>[] = [
       return (
         <div>
           <VolunteerDialog volunteer={row.original}>
-            <Button variant='outline' size='icon'>
+            <Button variant='link' className='px-0'>
               <Eye />
+              <span>View</span>
             </Button>
           </VolunteerDialog>
         </div>

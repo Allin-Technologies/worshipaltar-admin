@@ -222,7 +222,7 @@ export function LoginForm({
                   type='button'
                   disabled={!emailValid}
                   onClick={otpClicked}
-                  className='py-4 h-auto rounded-full font-semibold w-full'
+                  className='py-4 h-auto font-semibold w-full'
                 >
                   Send OTP
                 </Button>
@@ -254,7 +254,7 @@ export function LoginForm({
                     type='button'
                     disabled={!emailValid}
                     onClick={otpClicked}
-                    className='py-4 h-auto rounded-full font-semibold w-full'
+                    className='py-4 h-auto font-semibold w-full'
                     variant='secondary'
                   >
                     Resend
@@ -280,10 +280,7 @@ function SubmitButton({ pending: pendingProp }: { pending: boolean }) {
   const pending = status.pending || pendingProp;
 
   return (
-    <Button
-      disabled={pending}
-      className='py-4 h-auto rounded-full font-semibold w-full'
-    >
+    <Button disabled={pending} className='py-4 h-auto font-semibold w-full'>
       <span className='data-[active=true]:opacity-0' data-active={pending}>
         Login
       </span>

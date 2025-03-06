@@ -52,40 +52,39 @@ const VolunteerDialog: React.FC<VolunteerDialogProps> = ({
           </CardHeader>
           <CardContent className='space-y-4'>
             <div className='border-t border-gray-200 pt-4'>
-              <h3 className='text-lg font-semibold mb-2'>Volunteer Details</h3>
+              <h3 className='text-lg font-medium mb-2'>Volunteer Details</h3>
               <div className='grid grid-cols-2 gap-2 text-sm [&_svg]:flex-shrink-0'>
                 <div className='flex items-center'>
-                  <Briefcase className='mr-2' size={18} />
+                  <Briefcase className='mr-2' size={16} />
                   <span>Skills: {volunteer.metadata.skills}</span>
                 </div>
                 <div className='flex items-center'>
-                  <Shirt className='mr-2' size={18} />
+                  <Shirt className='mr-2' size={16} />
                   <span>T Shirt Size: {volunteer.metadata.shirt_size}</span>
                 </div>
-                <div className='flex items-center'>
-                  <Users className='mr-2' size={18} />
-                  <span>Teams: {teams}</span>
+                <div className='flex items-start'>
+                  <Users className='mr-2' size={16} />
+                  <span>Teams: {teams?.join(", ")}</span>
                 </div>
               </div>
             </div>
 
             <div className='border-t border-gray-200 pt-4'>
-              <h3 className='text-lg font-semibold mb-2'>
+              <h3 className='text-sm font-semibold mb-2'>
                 Additional Information
               </h3>
               <p className='text-sm'>
-                <strong>Motivation:</strong> {volunteer.metadata.motivation}
+                <span className='font-medium opacity-90'>Motivation:</span>{" "}
+                {volunteer.metadata.motivation}
               </p>
               <p className='text-sm'>
-                <strong>Expectations:</strong> {volunteer.metadata.expectations}
+                <span className='font-medium opacity-90'>Expectations:</span>{" "}
+                {volunteer.metadata.expectations}
               </p>
-              <div className='flex items-center mt-2 text-sm'>
-                <Users className='mr-2' size={18} />
-                <span>
-                  Future Interest:{" "}
-                  {volunteer.metadata.futureInterest ? "Yes" : "No"}
-                </span>
-              </div>
+              <p className='text-sm'>
+                <span className='font-medium opacity-90'>Future Interest:</span>{" "}
+                {volunteer.metadata.futureInterest ? "Yes" : "No"}
+              </p>
             </div>
           </CardContent>
         </Card>

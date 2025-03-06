@@ -38,7 +38,6 @@ const data = {
       title: "Registrations",
       url: "#",
       icon: User,
-      isActive: true,
       items: [
         {
           title: "Attendee",
@@ -80,7 +79,7 @@ const data = {
         },
         {
           title: "Invite",
-          url: "/dashboard/accounts/intive",
+          url: "/dashboard/accounts/invite",
         },
       ],
     },
