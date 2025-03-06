@@ -79,7 +79,7 @@ export function AnalyticsAreaChart({ days, month }: AnalyticsAreaChartProps) {
     const referenceDate = new Date();
     referenceDate.setHours(0, 0, 0, 0); // Normalize reference date to midnight
 
-    let startDate = new Date(referenceDate);
+    const startDate = new Date(referenceDate);
 
     if (timeRange === "90d") {
       startDate.setMonth(referenceDate.getMonth() - 3); // Go back 3 months safely

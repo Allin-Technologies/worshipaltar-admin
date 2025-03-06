@@ -39,6 +39,7 @@ jobs:
           build-args: |
             API_BASE_URL=${{ secrets.API_BASE_URL }}
             AUTH_SECRET=${{ secrets.AUTH_SECRET }}
+            PUBLIC_DOMAIN_URL=${{ secrets.PUBLIC_DOMAIN_URL }}
 
   deploy:
     needs: build
@@ -61,6 +62,7 @@ jobs:
             --name kmc-admin-frontend-container \
             -e API_BASE_URL="${{ secrets.API_BASE_URL }}" \
             -e AUTH_SECRET="${{ secrets.AUTH_SECRET }}" \
+            -e PUBLIC_DOMAIN_URL="${{ secrets.PUBLIC_DOMAIN_URL }}" \
             jdmghk/kmc-admin-frontend:latest
 
       - name: Check container logs
@@ -78,3 +80,10 @@ jobs:
           docker volume prune -f
           # Remove unused networks
           docker network prune -f
+
+          
+
+
+
+          
+          
