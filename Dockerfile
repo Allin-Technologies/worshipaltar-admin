@@ -133,7 +133,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 
 USER nextjs
-EXPOSE 3001
-ENV PORT=3001
+EXPOSE 3000
+ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 CMD ["npm", "run", "start"]
