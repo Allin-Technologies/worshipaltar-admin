@@ -40,7 +40,7 @@ export async function api<T>(
 ): Promise<BaseResponse<T>> {
   try {
     // Construct full URL
-    let fullUrl = new URL(`${env.API_BASE_URL}${config.url}`);
+    const fullUrl = new URL(`${env.API_BASE_URL}${config.url}`);
 
     // Append query params if provided
     if (config.params) {
