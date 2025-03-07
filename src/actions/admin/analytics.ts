@@ -28,7 +28,7 @@ export async function getAnalyticsData({
 
   try {
     const response = await api(AnalyticsData, {
-      url: `${env.API_BASE_URL}/admin/analytics/${timeline}`,
+      url: `/admin/analytics/${timeline}`,
       method: "get",
       headers: {
         "Content-Type": "application/json",

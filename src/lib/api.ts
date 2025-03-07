@@ -1,15 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import axios, { AxiosRequestConfig, Method } from "axios";
+import { AxiosRequestConfig, Method } from "axios";
 import * as z from "zod";
 import { env } from "../../env";
 
 /**
  * Creates an instance of axios with a base URL.
  */
-export const client = axios.create({
-  baseURL: env.API_BASE_URL,
-});
-
 interface BaseResponse<T> {
   message: string;
   error: Array<{ message: string }>;
@@ -43,20 +39,53 @@ export async function api<T>(
   config: ApiRequestConfig
 ): Promise<BaseResponse<T>> {
   try {
-    const response = await client(config);
+    // Construct full URL
+    let fullUrl = new URL(`${env.API_BASE_URL}${config.url}`);
 
-    // Assuming the response is of the BaseResponse structure
-    const baseResponse: BaseResponse<any> = response.data;
+    // Append query params if provided
+    if (config.params) {
+      Object.keys(config.params).forEach((key) =>
+        fullUrl.searchParams.append(key, String(config.params[key]))
+      );
+    }
+
+    const fetchResponse = await fetch(fullUrl, {
+      method: config.method.toUpperCase() || "GET",
+      headers: {
+        "Content-Type": "application/json",
+        ...config.headers,
+      },
+      body: config.data ? JSON.stringify(config.data) : undefined,
+    });
+
+    if (!fetchResponse.ok) {
+      const errorDetails = await fetchResponse.text();
+
+      if (errorDetails) {
+        const errorDetailsJson = JSON.parse(errorDetails);
+        if (errorDetailsJson && errorDetailsJson?.message)
+          throw new Error("An erro occured", {
+            cause: errorDetailsJson,
+          });
+      }
+
+      throw new Error(
+        `Failed to fetch resource: ${fetchResponse.status} ${fetchResponse.statusText}. Details: ${errorDetails}`
+      );
+    }
+
+    const fetchResponseJson: BaseResponse<any> = await fetchResponse.json();
 
     // Validate the `data` field using the provided Zod schema
-    const validatedData = validator.safeParse(baseResponse.data);
+    const validatedData = validator.safeParse(fetchResponseJson.data);
 
     if (validatedData.success) {
       // Return a successful response with validated data
       return {
-        ...baseResponse,
-        message: baseResponse?.error?.[0]?.message || baseResponse?.message,
-        response_code: response.status,
+        ...fetchResponseJson,
+        message:
+          fetchResponseJson?.error?.[0]?.message || fetchResponseJson?.message,
+        response_code: fetchResponse.status,
         data: validatedData.data,
       };
     } else {
@@ -75,8 +104,8 @@ export async function api<T>(
         error: [],
       };
     }
-  } catch (error) {
-    if (axios.isAxiosError(error) && error.response) {
+  } catch (error: any) {
+    if (error?.error && error.message) {
       // Handle API errors, assuming the error follows BaseErrorResponse format
       const errorResponse: BaseResponse<null> = error.response.data;
 
@@ -95,7 +124,10 @@ export async function api<T>(
       // Handle other unexpected errors in the same BaseErrorResponse format
       return {
         response_code: 500,
-        message: "An unexpected error occurred",
+        message:
+          error instanceof Error
+            ? error.message
+            : "An unexpected error occurred",
         data: null,
         count: 1,
         next: null,
