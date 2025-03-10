@@ -68,7 +68,7 @@ export async function getCollectionList(params: Params): Promise<{
         skip: z.number(),
       }),
       {
-        url: `/admin/${params.collection}`,
+        url: `/admin/collections/${params.collection}`,
         method: "get",
         headers: {
           Authorization: `Bearer ${session?.user?.access_token}`,

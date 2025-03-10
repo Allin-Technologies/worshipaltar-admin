@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { z, ZodError } from "zod";
@@ -69,6 +71,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn: "/auth/sign-in",
   },
   callbacks: {
+    // @ts-ignore
     async authorized({ auth, request: { nextUrl } }) {
       const isAuthRoute = nextUrl.pathname.includes("/auth");
 
@@ -87,6 +90,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       // Allow access for all other cases
       return true;
     },
+    // @ts-ignore
     jwt(params) {
       // console.log("jwt data:", params);
       if (params.user) {
@@ -109,6 +113,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       return params.token;
     },
+    // @ts-ignore
     session(params) {
       params.session.user = {
         ...params.session.user,

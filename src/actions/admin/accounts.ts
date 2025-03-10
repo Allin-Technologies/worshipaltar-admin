@@ -18,7 +18,7 @@ export async function getAccounts() {
 
   try {
     const response = await api(Account.array(), {
-      url: `${env.API_BASE_URL}/admin/account`,
+      url: `/admin/account`,
       method: "get",
       headers: {
         "Content-Type": "application/json",
@@ -52,7 +52,7 @@ export async function inviteAccount(
 
   try {
     const response = await api(Account.nullable(), {
-      url: `${env.API_BASE_URL}/admin/invite`,
+      url: `/admin/account/invite`,
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -60,6 +60,8 @@ export async function inviteAccount(
       },
       data: account,
     });
+
+    // console.log(response);
 
     return response;
   } catch (error: any) {
