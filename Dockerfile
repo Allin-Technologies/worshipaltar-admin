@@ -108,10 +108,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ARG API_BASE_URL
 ARG AUTH_SECRET
-ARG PUBLIC_DOMAIN_URL
 ENV API_BASE_URL=${API_BASE_URL}
 ENV AUTH_SECRET=${AUTH_SECRET}
-ENV PUBLIC_DOMAIN_URL=${PUBLIC_DOMAIN_URL}
 RUN pnpm run build
 
 # =========================
@@ -123,7 +121,6 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV API_BASE_URL=${API_BASE_URL}
 ENV AUTH_SECRET=${AUTH_SECRET}
-ENV PUBLIC_DOMAIN_URL=${PUBLIC_DOMAIN_URL}
 
 RUN addgroup --system --gid 1001 nodejs \
     && adduser --system --uid 1001 nextjs
