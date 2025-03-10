@@ -13,7 +13,7 @@ interface Props {
 
 export async function getAnalyticsData({
   timeline = "days",
-  year,
+  year = 2025,
   month,
 }: Props) {
   const session = await auth();
