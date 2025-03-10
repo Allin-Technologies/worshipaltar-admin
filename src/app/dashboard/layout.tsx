@@ -14,6 +14,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { auth } from "../../../auth";
+import { redirect } from "next/navigation";
 
 export default async function Layout({
   children,
@@ -21,6 +22,10 @@ export default async function Layout({
   children: React.ReactNode;
 }) {
   const session = await auth();
+
+  if (!session) {
+    redirect("/auth/sign-in");
+  }
 
   return (
     <SidebarProvider>

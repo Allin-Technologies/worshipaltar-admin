@@ -4,13 +4,15 @@ import glancyr from "./font/glancyr";
 
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { auth } from "../../auth";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Kingdom Millionaires Convention",
   description: "Rich In Christ & Rich In Cash.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

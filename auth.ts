@@ -73,23 +73,23 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     // @ts-ignore
     async authorized({ auth, request: { nextUrl } }) {
-      const isAuthRoute = nextUrl.pathname.includes("/auth");
+      // const isAuthRoute = nextUrl.pathname.includes("/auth");
 
-      if (nextUrl.pathname === "/") {
-        return Response.redirect(new URL(`/dashboard`, nextUrl));
-      }
+      // if (nextUrl.pathname === "/") {
+      //   return Response.redirect(new URL(`/dashboard`, nextUrl));
+      // }
 
-      if (isAuthRoute && auth) {
-        // If the path includes "/auth" and the user is authenticated
-        return Response.redirect(new URL(`/dashboard`, nextUrl));
-      }
+      // if (isAuthRoute && auth) {
+      //   // If the path includes "/auth" and the user is authenticated
+      //   return Response.redirect(new URL(`/dashboard`, nextUrl));
+      // }
 
-      if (!isAuthRoute && !auth) {
-        // If the path includes "/auth" and the user is NOT authenticated
-        return Response.redirect(
-          new URL(`/auth/sign-in?callbackUrl=${nextUrl.pathname}`, nextUrl)
-        );
-      }
+      // if (!isAuthRoute && !auth) {
+      //   // If the path includes "/auth" and the user is NOT authenticated
+      //   return Response.redirect(
+      //     new URL(`/auth/sign-in?callbackUrl=${nextUrl.pathname}`, nextUrl)
+      //   );
+      // }
 
       // Allow access for all other cases
       return true;
