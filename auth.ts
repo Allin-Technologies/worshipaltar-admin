@@ -75,9 +75,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async authorized({ auth, request: { nextUrl } }) {
       const isAuthRoute = nextUrl.pathname.includes("/auth");
 
+      if (nextUrl.pathname === "/") {
+        return Response.redirect(new URL(`/dashboard`, nextUrl));
+      }
+
       if (isAuthRoute && auth) {
         // If the path includes "/auth" and the user is authenticated
-        return Response.redirect(new URL(`/`, nextUrl));
+        return Response.redirect(new URL(`/dashboard`, nextUrl));
       }
 
       if (!isAuthRoute && !auth) {

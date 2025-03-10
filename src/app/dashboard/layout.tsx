@@ -14,7 +14,6 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { auth } from "../../../auth";
-import { redirect } from "next/navigation";
 
 export default async function Layout({
   children,
@@ -23,13 +22,9 @@ export default async function Layout({
 }) {
   const session = await auth();
 
-  if (!session || !session?.user) {
-    return redirect("/auth");
-  }
-
   return (
     <SidebarProvider>
-      <AppSidebar user={session.user} />
+      <AppSidebar user={session?.user || {}} />
       <SidebarInset>
         <header className='flex h-16 shrink-0 items-center gap-2'>
           <div className='flex items-center gap-2 px-4'>

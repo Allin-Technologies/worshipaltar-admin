@@ -87,7 +87,7 @@ export function CollectionTable({
           <Loader className='size-4 text-gray-400 animate-spin' />
         )}
         <span className='leading-none'>
-          {filterTimeline(dataQuery?.data?.data.items ?? [])}
+          {filterTimeline(dataQuery?.data?.data?.items ?? [])}
         </span>
       </Portal>
       <div className='rounded-xl overflow-clip flex-1'>

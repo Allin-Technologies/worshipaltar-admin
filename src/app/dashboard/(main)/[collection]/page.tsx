@@ -59,7 +59,7 @@ export default async function Table(props: {
           collection={
             page.type === "attendee" ? "registration" : (page.type as any)
           }
-          defaultData={defaultData?.data.items ?? []}
+          defaultData={defaultData?.data?.items ?? []}
           defaultPagination={{ pageIndex: 0, pageSize: 24 }}
         />
       </div>
