@@ -18,8 +18,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { Registration, Sponsor, Volunteer } from "@/schema/entities";
-import { regColumns, volunteerColumns, sponsorColumns } from "./columns";
+import { Registration, Testimony, NewConvert } from "@/schema/entities";
+import { regColumns, new_convertColumns, testimonyColumns } from "./columns";
 import { Portal } from "@/components/ui/portal";
 import { Separator } from "@/components/ui/separator";
 import { useSearchParams } from "next/navigation";
@@ -28,8 +28,8 @@ import { filterTimeline } from "@/lib/tabel-timeline";
 import { Loader } from "lucide-react";
 
 interface RegistrationsTableProps {
-  collection: "registration" | "sponsor" | "volunteer";
-  defaultData: Array<Registration | Sponsor | Volunteer>;
+  collection: "registration" | "testimony" | "new-convert";
+  defaultData: Array<Registration | Testimony | NewConvert>;
   defaultPagination: PaginationState;
 }
 
@@ -41,9 +41,9 @@ export function CollectionTable({
   const columns: any =
     collection === "registration"
       ? regColumns
-      : collection === "sponsor"
-      ? sponsorColumns
-      : volunteerColumns;
+      : collection === "testimony"
+      ? testimonyColumns
+      : new_convertColumns;
 
   const searchParams = useSearchParams();
 

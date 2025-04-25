@@ -29,7 +29,7 @@ export function downloadCSV(fileContent: Blob, fileName = "data.csv") {
 }
 
 export async function fetchCSVContent(
-  collection: "registration" | "sponsor" | "volunteer"
+  collection: "registration" | "testimony" | "new-convert"
 ) {
   const result = await getCSVContent(collection);
   if (!result.status) {

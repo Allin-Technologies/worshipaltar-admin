@@ -27,10 +27,10 @@ export default async function Table(props: {
             switch (collection) {
               case "attendee":
                 return "Attendee Registrations";
-              case "sponsor":
-                return "Sponsors";
-              case "volunteer":
-                return "Volunteers";
+              case "testimony":
+                return "Testimonies";
+              case "new-convert":
+                return "NewConverts";
               default:
                 return "";
             }

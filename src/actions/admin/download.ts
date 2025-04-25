@@ -4,7 +4,7 @@ import { auth } from "../../../auth";
 import { env } from "../../../env";
 
 export async function getCSVContent(
-  collection: "registration" | "sponsor" | "volunteer"
+  collection: "registration" | "testimony" | "new-convert"
 ) {
   const session = await auth();
 

@@ -33,12 +33,12 @@ const daysChartConfig = {
     label: "Registrations",
     color: "hsl(var(--chart-1))",
   },
-  sponsors: {
-    label: "Sponsors",
+  testimonies: {
+    label: "Testimonies",
     color: "hsl(var(--chart-2))",
   },
-  volunteers: {
-    label: "Volunteers",
+  new_convert: {
+    label: "NewConverts",
     color: "hsl(var(--chart-3))",
   },
 } satisfies ChartConfig;
@@ -48,12 +48,12 @@ const monthChartConfig = {
     label: "Registrations",
     color: "hsl(var(--chart-1))",
   },
-  sponsors: {
-    label: "Sponsors",
+  testimonies: {
+    label: "Testimonies",
     color: "hsl(var(--chart-2))",
   },
-  volunteers: {
-    label: "Volunteers",
+  new_convert: {
+    label: "NewConverts",
     color: "hsl(var(--chart-3))",
   },
 } satisfies ChartConfig;
@@ -115,10 +115,10 @@ export function AnalyticsAreaChart({ days, month }: AnalyticsAreaChartProps) {
     //             fill='var(--color-registrations)'
     //             radius={4}
     //           />
-    //           <Bar dataKey='sponsors' fill='var(--color-sponsors)' radius={4} />
+    //           <Bar dataKey='testimonies' fill='var(--color-testimonies)' radius={4} />
     //           <Bar
-    //             dataKey='volunteers'
-    //             fill='var(--color-volunteers)'
+    //             dataKey='new-convert'
+    //             fill='var(--color-new-convert)'
     //             radius={4}
     //           />
     //         </BarChart>
@@ -182,27 +182,27 @@ export function AnalyticsAreaChart({ days, month }: AnalyticsAreaChartProps) {
                   stopOpacity={0.1}
                 />
               </linearGradient>
-              <linearGradient id='fillSponsors' x1='0' y1='0' x2='0' y2='1'>
+              <linearGradient id='fillTestimonies' x1='0' y1='0' x2='0' y2='1'>
                 <stop
                   offset='5%'
-                  stopColor='var(--color-sponsors)'
+                  stopColor='var(--color-testimonies)'
                   stopOpacity={0.8}
                 />
                 <stop
                   offset='95%'
-                  stopColor='var(--color-sponsors)'
+                  stopColor='var(--color-testimonies)'
                   stopOpacity={0.1}
                 />
               </linearGradient>
-              <linearGradient id='fillVolunteers' x1='0' y1='0' x2='0' y2='1'>
+              <linearGradient id='fillNewConverts' x1='0' y1='0' x2='0' y2='1'>
                 <stop
                   offset='5%'
-                  stopColor='var(--color-volunteers)'
+                  stopColor='var(--color-new-convert)'
                   stopOpacity={0.8}
                 />
                 <stop
                   offset='95%'
-                  stopColor='var(--color-volunteers)'
+                  stopColor='var(--color-new-convert)'
                   stopOpacity={0.1}
                 />
               </linearGradient>
@@ -244,17 +244,17 @@ export function AnalyticsAreaChart({ days, month }: AnalyticsAreaChartProps) {
               stackId='a'
             />
             <Area
-              dataKey='sponsors'
+              dataKey='testimonies'
               type='natural'
-              fill='url(#fillSponsors)'
-              stroke='var(--color-sponsors)'
+              fill='url(#fillTestimonies)'
+              stroke='var(--color-testimonies)'
               stackId='a'
             />
             <Area
-              dataKey='volunteers'
+              dataKey='new-convert'
               type='natural'
-              fill='url(#fillVolunteers)'
-              stroke='var(--color-volunteers)'
+              fill='url(#fillNewConverts)'
+              stroke='var(--color-new-convert)'
               stackId='a'
             />
             <ChartLegend content={<ChartLegendContent />} />

@@ -44,12 +44,12 @@ const data = {
           url: "/dashboard/attendee",
         },
         {
-          title: "Sponsor",
-          url: "/dashboard/sponsor",
+          title: "Testimonies",
+          url: "/dashboard/testimony",
         },
         {
-          title: "Volunteer",
-          url: "/dashboard/volunteer",
+          title: "New Convert",
+          url: "/dashboard/new-convert",
         },
       ],
     },
@@ -105,7 +105,7 @@ export function AppSidebar({
             <SidebarMenuButton size='lg' asChild>
               <Link href='/'>
                 <Image
-                  src='/assets/KMC-logo-light.png'
+                  src='/assets/logo.png'
                   alt='logo'
                   width={100}
                   height={100}

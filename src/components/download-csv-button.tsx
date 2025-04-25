@@ -10,7 +10,7 @@ import { toast } from "sonner";
 export function DownloadCSV({
   collection,
 }: {
-  collection: "registration" | "sponsor" | "volunteer";
+  collection: "registration" | "testimony" | "new-convert";
 }) {
   const mutation = useMutation({
     mutationFn: () => fetchCSVContent(collection),

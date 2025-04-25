@@ -132,16 +132,16 @@ export function LoginForm({
             >
               <div className='flex items-center justify-center pb-8'>
                 <Image
-                  src='/assets/KMC-logo-light.png'
-                  alt='KMC Logo'
+                  src='/assets/logo.png'
+                  alt='Logo'
                   width={200}
-                  height={80}
-                  className='h-8 w-auto'
+                  height={200}
+                  className='h-12 w-auto'
                 />
               </div>
-              <span className='sr-only'>Kingdom Millionaire Conference</span>
+              <span className='sr-only'>Praisewine 2025</span>
             </Link>
-            <h1 className='text-xl font-bold'>Welcome Back</h1>
+            <h1 className='text-xl font-bold font-gobold'>Welcome Back</h1>
             <div className='text-center text-sm'>
               Don&apos;t have an account? Contact the admin.
             </div>

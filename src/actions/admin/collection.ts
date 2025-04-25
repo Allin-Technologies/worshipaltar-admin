@@ -3,12 +3,12 @@
 import { api } from "@/lib/api";
 import { auth } from "../../../auth";
 
-import { Registration, Sponsor, Volunteer } from "@/schema/entities";
+import { Registration, Testimony, NewConvert } from "@/schema/entities";
 import { PaginationState } from "@/schema/pagination";
 import { z } from "zod";
 
 interface Params {
-  collection: "registration" | "sponsor" | "volunteer";
+  collection: "registration" | "testimony" | "new-convert";
   pagination: PaginationState;
 }
 
@@ -20,7 +20,7 @@ export interface BaseResponse<T> {
 
 export async function getCollectionList(params: Params): Promise<{
   data: {
-    items: Array<Registration | Sponsor | Volunteer> | null;
+    items: Array<Registration | Testimony | NewConvert> | null;
     total: number;
   };
   status: boolean;
@@ -42,10 +42,10 @@ export async function getCollectionList(params: Params): Promise<{
   const collectionValidator =
     params.collection === "registration"
       ? Registration
-      : params.collection === "volunteer"
-      ? Sponsor
-      : params.collection === "sponsor"
-      ? Volunteer
+      : params.collection === "new-convert"
+      ? Testimony
+      : params.collection === "testimony"
+      ? NewConvert
       : undefined;
 
   if (!collectionValidator) {
