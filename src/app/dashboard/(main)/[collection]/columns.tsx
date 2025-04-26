@@ -67,10 +67,6 @@ export const new_convertColumns: ColumnDef<NewConvert>[] = [
     header: "Name",
   },
   {
-    accessorKey: "email",
-    header: "Email",
-  },
-  {
     accessorKey: "tel",
     header: "Phone Number",
   },
@@ -84,20 +80,8 @@ export const new_convertColumns: ColumnDef<NewConvert>[] = [
     cell({ row }) {
       const address = row.original.metadata.address;
 
-      return (
-        <span className=''>
-          {address?.line_1}, {address?.state} {address?.country}
-        </span>
-      );
+      return <span className=''>{address?.line_1}</span>;
     },
-  },
-  {
-    accessorKey: "metadata.service_attended",
-    header: "Service attended",
-  },
-  {
-    accessorKey: "metadata.worshipping_at",
-    header: "Worshipping At",
   },
   {
     accessorKey: "timestamp",
@@ -114,10 +98,6 @@ export const testimonyColumns: ColumnDef<Testimony>[] = [
   {
     accessorKey: "name",
     header: "Name",
-  },
-  {
-    accessorKey: "email",
-    header: "Email",
   },
   {
     accessorKey: "tel",

@@ -8,37 +8,35 @@ export const defaultSchema = z.object({
   timestamp: z.date().or(z.string()),
 });
 
-export const Registration = defaultSchema.extend({
-  checked_in: z.boolean().optional(),
-});
+export const Registration = defaultSchema.extend({});
 export type Registration = z.infer<typeof Registration>;
 
 export const NewConvert = defaultSchema.extend({
-  email: z.string().email(),
   metadata: z.object({
-    dob: z.string(),
+    socials: z
+      .object({
+        platform: z.string(),
+        handle: z.string(),
+      })
+      .array(),
     address: z.object({
-      country: z.string(),
-      state: z.string(),
-      line_1: z.string(),
+      line_1: z.string().min(2, { message: "Required" }),
     }),
-    service_attended: z.string(),
-    worshipping_at: z.string(),
   }),
 });
 export type NewConvert = z.infer<typeof NewConvert>;
 
 export const Testimony = defaultSchema.extend({
-  email: z.string().email(),
   metadata: z.object({
-    title: z.string(),
-    body: z.string(),
-    attachments: z
+    socials: z
       .object({
-        filename: z.string(),
-        url: z.string().url(),
+        platform: z.string(),
+        handle: z.string(),
       })
       .array(),
+    title: z.string().min(2, { message: "Required" }),
+    body: z.string().min(2, { message: "Required" }),
+    attachments: z.any().array(),
   }),
 });
 export type Testimony = z.infer<typeof Testimony>;
