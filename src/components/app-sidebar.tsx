@@ -53,21 +53,21 @@ const data = {
         },
       ],
     },
-    {
-      title: "Checkin",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Search",
-          url: "#",
-        },
-        {
-          title: "Scan",
-          url: "#",
-        },
-      ],
-    },
+    // {
+    //   title: "Checkin",
+    //   url: "#",
+    //   icon: Bot,
+    //   items: [
+    //     {
+    //       title: "Search",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Scan",
+    //       url: "#",
+    //     },
+    //   ],
+    // },
     {
       title: "Settings",
       url: "#",
