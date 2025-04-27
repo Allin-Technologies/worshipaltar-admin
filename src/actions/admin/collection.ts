@@ -73,6 +73,12 @@ export async function getCollectionList(params: Params): Promise<{
         headers: {
           Authorization: `Bearer ${session?.user?.access_token}`,
         },
+        params: {
+          limit: params?.pagination?.pageSize,
+          skip:
+            params?.pagination?.pageIndex *
+            (params?.pagination?.pageSize ?? 24),
+        },
       }
     );
 
