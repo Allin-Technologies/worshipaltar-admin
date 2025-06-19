@@ -3,7 +3,7 @@ import { TanstackQueryProvider } from "@/providers/TanstackQuery";
 import { Toaster } from "@/components/ui/sonner";
 import { Oswald } from "next/font/google";
 
-export const oswald = Oswald({
+const oswald = Oswald({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700"],
   preload: true,
