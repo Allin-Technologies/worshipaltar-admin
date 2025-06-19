@@ -109,7 +109,7 @@ export function AppSidebar({
                   alt='logo'
                   width={100}
                   height={100}
-                  className='h-16 object-contain'
+                  className='h-16 object-contain invert'
                 />
               </Link>
             </SidebarMenuButton>
