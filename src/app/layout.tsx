@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { TanstackQueryProvider } from "@/providers/TanstackQuery";
 import { Toaster } from "@/components/ui/sonner";
-import { inter, gobold, gobold_hollow } from "@/fonts";
+import { Oswald } from "next/font/google";
+
+export const oswald = Oswald({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700"],
+  preload: true,
+});
 
 import "./globals.css";
 
@@ -25,7 +31,7 @@ export default async function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${gobold.variable} ${gobold_hollow.variable} ${inter.className} antialiased`}
+        className={`${oswald.className} antialiased`}
       >
         <TanstackQueryProvider>{children}</TanstackQueryProvider>
         <Toaster />
