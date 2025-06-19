@@ -12,9 +12,8 @@ const oswald = Oswald({
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Praisewine 2025",
-  description:
-    "Praisewine is a mandate for us all to Praise and Worship Him for WHO HE HIS.",
+   title: "The Worship Altar",
+  description: "Connecting Believers Through Worship, Growth, and Outreach.",
   icons: {
     icon: [
       { url: "/favicon-1.ico", media: "(prefers-color-scheme: light)" },
