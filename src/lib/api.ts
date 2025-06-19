@@ -60,18 +60,30 @@ export async function api<T>(
 
     if (!fetchResponse.ok) {
       const errorDetails = await fetchResponse.text();
+      const errorDetailsJson = JSON.parse(errorDetails);
 
-      if (errorDetails) {
-        const errorDetailsJson = JSON.parse(errorDetails);
-        if (errorDetailsJson && errorDetailsJson?.message)
-          throw new Error("An erro occured", {
-            cause: errorDetailsJson,
+      if (!errorDetailsJson) {
+
+          throw new Error("An error occured", {
+            cause: errorDetails,
           });
       }
 
-      throw new Error(
-        `Failed to fetch resource: ${fetchResponse.status} ${fetchResponse.statusText}. Details: ${errorDetails}`
-      );
+      return {
+        response_code: fetchResponse.status || 500,
+        message: errorDetailsJson?.error?.[0]?.message || errorDetailsJson.message,
+        data: errorDetailsJson.data,
+        count: 1,
+        next: null,
+        previous: null,
+        page_size: 1,
+        total_pages: 1,
+        error: [],
+      };
+
+      // throw new Error(
+      //   `Failed to fetch resource: ${fetchResponse.status} ${fetchResponse.statusText}. Details: ${errorDetails}`
+      // );
     }
 
     const fetchResponseJson: BaseResponse<any> = await fetchResponse.json();

@@ -136,7 +136,7 @@ export function LoginForm({
                   alt='Logo'
                   width={200}
                   height={200}
-                  className='h-12 w-auto'
+                  className='h-12 w-auto invert'
                 />
               </div>
               <span className='sr-only'>Praisewine 2025</span>
