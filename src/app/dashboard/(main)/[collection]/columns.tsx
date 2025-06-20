@@ -10,6 +10,10 @@ export const regColumns: ColumnDef<Registration>[] = [
     header: "Full name",
   },
   {
+    accessorKey: "email",
+    header: "Email",
+  },
+  {
     accessorKey: "tel",
     header: "Phone Number",
   },
@@ -67,6 +71,10 @@ export const new_convertColumns: ColumnDef<NewConvert>[] = [
     header: "Name",
   },
   {
+    accessorKey: "email",
+    header: "Email",
+  },
+  {
     accessorKey: "tel",
     header: "Phone Number",
   },
@@ -98,6 +106,10 @@ export const testimonyColumns: ColumnDef<Testimony>[] = [
   {
     accessorKey: "name",
     header: "Name",
+  },
+  {
+    accessorKey: "email",
+    header: "Email",
   },
   {
     accessorKey: "tel",
