@@ -5,7 +5,7 @@ import { Oswald } from "next/font/google";
 
 const oswald = Oswald({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   preload: true,
 });
 
