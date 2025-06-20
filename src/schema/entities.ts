@@ -3,7 +3,7 @@ import { z } from "zod";
 export const defaultSchema = z.object({
   _id: z.string().length(24),
   name: z.string(),
-  email: z.string().email(),
+  email: z.string().email().optional(),
   tel: z.string(),
   gender: z.enum(["male", "female", "other"]),
   timestamp: z.date().or(z.string()),
